@@ -5,7 +5,7 @@
     <!-- Remove this if you don't implement routing -->
     <ul class="filters">
       <li *ngFor="let filtro of filtros" (click)="filt(filtro)">
-        <a [class.selected]="filtro === filtroActual" href="#/">{{filtro}}</a>
+        <a [class.selected]="filtro === filtroActual">{{filtro}}</a>
       </li>
       <!-- <li>
         <a href="#/active">Activos</a>

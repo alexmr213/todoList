@@ -1,16 +1,21 @@
 import { createAction, props } from '@ngrx/store';
+import { Todo } from './models/todo.model';
 
+
+export const listar = createAction(
+  '[Todo] Listar Todos',
+);
+export const juntarArray = createAction(
+  '[Todo] agregar Todos',
+  props<{ lista:Todo[] }>()
+);
 export const crear = createAction(
   '[Todo] Crear Todo',
   props<{ texto: string }>()
 );
-export const completado = createAction(
-  '[Todo] Completar Todo',
-  props<{ id: number }>()
-);
 export const editar = createAction(
-  '[Todo] Editar Todo',
-  props<{ id: number; texto: string }>()
+  '[Todo] Completar Todo',
+  props<{ id: number, obj:{} }>()
 );
 
 export const borrar = createAction(

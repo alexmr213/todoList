@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  listar,
+  juntarArray,
   crear,
-  completado,
   editar,
   borrar,
   borrarCompletados,
@@ -9,47 +10,29 @@ import {
 } from './todo.actions';
 import { Todo } from './models/todo.model';
 
-export const initialState: Todo[] = [];
+
+export const initialState: Todo[] = [
+];
 
 const _todoReducer = createReducer(
   initialState,
-  on(crear, (state, { texto }) => [...state, new Todo(texto)]),
-  on(completado, (state, { id }) => {
-    return state.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completado: !todo.completado,
-        };
-      } else {
-        return todo;
-      }
-    });
+  on(listar, (state) => [...state]),
+  on(juntarArray, (state, { lista }) => {
+    // con esto fusionamos los arrays
+    return state = [...lista];
   }),
-  on(editar, (state, { id, texto }) => {
-    return state.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          texto,
-        };
-      } else {
-        return todo;
-      }
-    });
+  on(crear, (state, { texto }) => [...state, new Todo(texto)]),
+  on(editar, (state, { id, obj }) => {
+    return state
   }),
   on(borrar, (state, { id }) => {
-    return state.filter((todo) => {
-      return todo.id !== id;
-    });
+    return state
   }),
   on(borrarCompletados, (state) => {
-    return state.filter(todo => !todo.completado)
+    return state
   }),
   on(activarDesactivar, (state, { completado }) => {
-    return state.map((todo) => {
-      return { ...todo, completado };
-    });
+    return state;
   })
 );
 

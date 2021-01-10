@@ -1,0 +1,10 @@
+<h1>Login</h1>
+<label for="email">Email</label>
+<input type="text" id="email" [(ngModel)]="email">
+<label for="password">Password</label>
+<input type="text" id="password" [(ngModel)]="password">
+<label *ngIf="registrarse" for="nombre">Nombre</label>
+<input *ngIf="registrarse" type="text" id="nombre" [(ngModel)]="nombre">
+<label  for="registro">¿Desea registrarse?</label>
+<input type="checkbox" id="registro" [(ngModel)]="registrarse">
+<button  id="login"(click)="login()">Enviar Login</button>

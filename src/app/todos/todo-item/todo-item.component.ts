@@ -25,7 +25,7 @@ export class TodoItemComponent implements OnInit {
     this.txtInput = new FormControl(this.todo.texto, Validators.required);
 
     this.chkCompletado.valueChanges.subscribe((valor) => {
-      this.store.dispatch(actions.completado({ id: this.todo.id }));
+      this.store.dispatch(actions.editar({ id: this.todo.id, obj:{texto:this.txtInput.value,completado:this.chkCompletado.value} }));
     });
   }
 
@@ -47,7 +47,7 @@ export class TodoItemComponent implements OnInit {
     }
     if (this.todo.texto !== this.txtInput.value) {
       this.store.dispatch(
-        actions.editar({ id: this.todo.id, texto: this.txtInput.value })
+        actions.editar({ id: this.todo.id, obj:{texto:this.txtInput.value,completado:this.chkCompletado.value} })
       );
     }
   }
