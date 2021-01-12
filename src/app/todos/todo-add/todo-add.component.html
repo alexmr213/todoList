@@ -1,5 +1,8 @@
 <header class="header">
+  <div class="cabecera">
     <h1>todos</h1>
+    <button (click)="logOut()">Salir</button>
+  </div>
     <input class="new-todo" 
     [formControl] = 'txtInput'
     (keyup.enter)="agregar()"

@@ -1,10 +1,66 @@
-<h1>Login</h1>
+<!-- <h1>Login</h1>
 <label for="email">Email</label>
-<input type="text" id="email" [(ngModel)]="email">
+<input type="email" id="email"  [(ngModel)]="usuario.email">
 <label for="password">Password</label>
-<input type="text" id="password" [(ngModel)]="password">
+<input type="password" id="password" [(ngModel)]="password">
 <label *ngIf="registrarse" for="nombre">Nombre</label>
 <input *ngIf="registrarse" type="text" id="nombre" [(ngModel)]="nombre">
 <label  for="registro">¿Desea registrarse?</label>
 <input type="checkbox" id="registro" [(ngModel)]="registrarse">
-<button  id="login"(click)="login()">Enviar Login</button>
+<button  id="login"(click)="login()">Enviar Login</button> -->
+
+<div class="container">
+    <div class="formulario">
+        <h1 *ngIf="registrarse">Registrarse</h1>
+        <h1 *ngIf="!registrarse">Login</h1>
+    <form (ngSubmit)="onSubmit(registroForm)" #registroForm="ngForm">
+
+        <div class="wrap-input100 m-b-16" *ngIf="registrarse">
+            <span [ngClass]="registroForm.submitted && registroForm.controls['nombre'].errors?'mostrar':'ocultar'"
+            class="text-danger animated fadeIn">El Nombre debe contener más de dos digitos</span> 
+            <input class="input100" 
+                   type="text" 
+                   name="nombre" 
+                   [(ngModel)]="usuario.nombre"
+                   required
+                   minlength="2"
+                   placeholder="Nombre y apellidos">
+
+            <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 m-b-16">
+            <span [ngClass]="registroForm.submitted && registroForm.controls['email'].errors?'mostrar':'ocultar'"
+            class="text-danger animated fadeIn">El correo es obligatorio</span> 
+           <input class="input100" 
+                  type="email" 
+                  name="email" 
+                  [(ngModel)]="usuario.email"
+                  required
+                  email
+                  placeholder="Email">
+           <span class="focus-input100"></span>
+       </div>
+       
+       <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+        <span [ngClass]="registroForm.submitted && registroForm.controls['password'].errors?'mostrar':'ocultar'"
+        class="text-danger animated fadeIn">La contraseña debe de tener min. 6 digitos.</span> 
+           <input class="input100"
+                  type="password" 
+                  name="password" 
+                  [(ngModel)]="usuario.password"
+                  required
+                  minlength="6"
+                  placeholder="Password">
+           <span class="focus-input100"></span>
+       </div>
+       <div class="registroContainer">
+           <span>No tengo cuenta y quiero registrarme</span><input type="checkbox" name="registro" id="registro" [(ngModel)]="registrarse">
+       </div>
+<button type="submit">
+    <span *ngIf="registrarse">Registrarse</span>
+    <span *ngIf="!registrarse">Acceder</span>
+</button>
+    </form>
+  </div>
+</div>

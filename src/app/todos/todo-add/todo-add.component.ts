@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import * as actions from '../todo.actions';
@@ -13,7 +14,8 @@ import * as actions from '../todo.actions';
 export class TodoAddComponent implements OnInit {
   txtInput: FormControl;
 
-  constructor( private store: Store<AppState>) {
+  constructor( private store: Store<AppState>,
+    private router: Router) {
     this.txtInput = new FormControl('', Validators.required);
   }
 
@@ -26,5 +28,11 @@ export class TodoAddComponent implements OnInit {
     this.store.dispatch(actions.crear({texto: this.txtInput.value}));
     this.txtInput.reset();
 
+  }
+  logOut(){
+    localStorage.removeItem('idUser')
+    localStorage.removeItem('status')
+    this.router.navigateByUrl('/login');
+    
   }
 }

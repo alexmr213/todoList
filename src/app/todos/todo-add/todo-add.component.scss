@@ -1,0 +1,17 @@
+.cabecera{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    button{
+        position: absolute;
+        right: 0;
+        top: -90px;
+        font-weight: bolder;
+        color: white;
+        background-color: #b83f45;
+        padding: 0.3vw;
+        border-radius: 0.2vw;
+    }
+}
