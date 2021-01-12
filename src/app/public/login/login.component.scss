@@ -12,8 +12,8 @@
   min-width: auto !important;
   max-width: auto !important;
   .formulario {
-    width: 20vw;
-    height: 46vh;
+    width: 30%;
+    height: 43%;
     background-color: rgba(236, 245, 245, 0.849);
     display: flex;
     align-items: center;
@@ -55,19 +55,65 @@
         color: white;
         background-color: rgb(9, 80, 173);
         border-radius: 1vw;
-        width: 10vw;
-        height: 4vh;
+        padding: 3%;
+        width: 50%;
         margin-top: 2vh;
       }
     }
   }
 }
 
-#login {
-  background-color: red;
-  border-radius: 10px;
-  color: white;
-  padding: 5px;
-  margin: 3px;
-  font-weight: bold;
+
+@media (max-width: 1306px){
+    .container{
+        background-size: 120%;
+}
+}
+@media (max-width: 1108px){
+    .container{
+        background-size: auto;
+    
+    .formulario {
+        width: 30%;
+        height: 46%;
+        background-color: rgba(236, 245, 245, 0.849);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.8vw;
+}
+}
+}
+@media (max-width: 1000px){
+    .container{
+        background-size: auto;
+    
+    .formulario {
+        width: 50%;
+        height: 46%;
+        background-color: rgba(236, 245, 245, 0.849);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.8vw;
+}
+}
+}
+@media (max-width: 667px){
+    .container{
+        background-size: auto;
+    
+    .formulario {
+        width: 100%;
+        height: 46%;
+        background-color: rgba(236, 245, 245, 0.849);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.8vw;
+}
+}
 }
